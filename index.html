@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+         body {
+            font-family: 'BioRhyme', serif; /* Applying BioRhyme font to the entire page */
+            background-color: rgba(245, 249, 255, 0.8);
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('tom.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: 0.66;
+        }
+        h1 {
+            color: #16315d;
+            background-color: rgba(245, 249, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #062557;
+            margin-bottom: 20px;
+            background-color: #aedfff;
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        }
+        h4 {
+            background-color: #c4d6f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+        .personal-info {
+            border: 2px solid #aedfff;
+            padding: 20px;
+            margin: 20px auto;
+            text-align: center; /* Center aligning the "Personal Information" section */
+            background-color: rgba(245, 249, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+        .content-box {
+            border: 2px solid #aedfff;
+            padding: 20px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: rgba(245, 249, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+        img, iframe {
+            display: block;
+            margin: auto;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            width: 560px;
+            height: 315px;
+        }
+        .decor {
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            top: -25%;
+            left: -25%;
+            background-image: radial-gradient(ellipse at center, #aedfff 0%, rgba(245, 249, 255, 0.8) 70%);
+            opacity: 0.5;
+            z-index: -1;
+            transform: rotate(-30deg);
+        }
+        .dialogue-box {
+            background-color: rgba(245, 249, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            text-align: center; /* Center aligning the "Famous Dialogues" section */
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+        .question-box {
+            border: 2px solid #aedfff;
+            padding: 20px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #aedfff;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+        .question-box button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #062557;
+            color: white;
+            font-size: 23px;
+        }
+        .question-box button:hover {
+            background-color: #16315d;
+        }
+        .comments-box {
+            border: 2px solid #aedfff;
+            padding: 20px;
+            margin: 20px auto;
+            text-align: left; /* Aligning text to the left */
+            background-color: rgba(173, 216, 230, 0.8); /* Blue theme for the comments box */
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px; /* Adjust width as needed */
+        }
+        .comments-list {
+            list-style: none;
+            padding: 0;
+        }
+        .comment-item {
+            margin-bottom: 15px;
+        }
+        .comment-item span {
+            font-size: 12px;
+            color: #888;
+        }
+        #submit-btn {
+            background-color: #aedfff; /* Pale blue color for the button */
+            color: #16315d;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #submit-btn:hover {
+            background-color: #8ab8e8; /* Darker shade on hover */
+        }
+        .personal-info,
+        .info-box,
+        .dialogue-box,
+        .question-box{
+            text-align: center;
+            max-width: fit-content;
+            border: 2px solid #aedfff;
+            padding: 20px;
+            margin: 20px auto;
+            background-color: rgba(173, 216, 230, 0.8); /* Blue theme for the boxes */
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+        .friends-column   
+        {
+            text-align: left;
+            max-width: fit-content;
+            border: 2px solid #aedfff;
+            padding: 20px;
+            margin: 20px auto;
+            background-color: rgba(173, 216, 230, 0.8); /* Blue theme for the boxes */
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <title>Charuhasini</title>
+</head>
+<body>
+    <div class="background-image"></div>
+    <h1><i>🎶 Welcome to my space 🎶</i></h1>
+    <div class="personal-info">
+        <h2>Personal Information</h2>
+        <h4>
+            <b>Name:</b> G.L.S. Charuhasini<br>
+            <b>Branch:</b> CSE<br>
+            <b>Section:</b> 2<br>
+            <b>Roll No:</b> 323103310076<br>
+            <b>Zodiac:</b> <a href="https://en.wikipedia.org/wiki/Aries_(astrology)">Aries</a>
+        </h4>
+    </div>
+    <div class="content-box">
+        <div class="decor"></div>
+        <img src="loki.jpg" alt="Tom Hiddleston as Loki">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/LdwClcDvVao?si=Y-wad4iM3cjpa7UC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="info-box">
+        <h2>Get to know me🪄</h2>
+        <h4>
+            Hi! My name is Charuhasini.<br>
+            What you see is a picture of my favorite actor, <a href="https://en.wikipedia.org/wiki/Tom_Hiddleston">Tom Hiddleston</a>, from the movie <a href="https://en.wikipedia.org/wiki/Thor:_Ragnarok">Thor: Ragnarok</a>.<br>
+            I love learning.<br>
+            I believe change is the only thing promised in life.<br><br>
+            So... when was the last time you did something for the first time? ✈️ 🌍 🗺️ 🧭 🌠
+        </h4>
+    </div>
+    <div class="dialogue-box">
+        <h2>Famous Dialogues by Tom Hiddleston</h2>
+        <b>
+            <p>"Your Majesty, I have journeyed from the Apennines to the Alps to seek your wisdom."</p>
+            <p>"Glorious purpose."</p>
+            <p>"The bright lure of freedom diminishes your life's joy in a mad scramble for power."</p>
+            <!-- Add more dialogues here -->
+        </b>
+    </div>
+    <div class="question-box">
+        <h2>Do you like the Loki series?</h2>
+        <button onclick="showMessage(true)" id="yesBtn">Yes</button>
+        <button onclick="showMessage(false)">No</button>
+        <p id="user-response"></p>
+    </div>
+</body>
+    <div class="friends-column">
+        <h2>Check out my friends' websites</h2>
+        <ul>
+            <li><a href="https://sanjanatankala.me/">sanjanatankala</a></li>
+            <li><a href="https://rajyalakshmi.me">rajyalakshmi</a></li>
+            <li><a href="https://srinijacse2.me">srinijacse2</a></li>
+            <li><a href="https://syamala.me">syamala</a></li>
+            <li><a href="https://saibhargavi.me">saibhargavi</a></li>
+            <!-- Add more friends' websites as needed -->
+        </ul>
+    </div>
+    <script>
+        function showMessage(likeLoki) {
+            const userResponse = document.getElementById('user-response');
+            if (likeLoki) {
+                userResponse.textContent = "You are awesome!!!";
+            } else {
+                userResponse.textContent = "Your loss!";
+            }
+        }
+    </script>
+         <div class="comments-box">
+            <h2>Comments</h2>
+            <form id="comment-form">
+                <textarea id="comment" placeholder="Leave your comment here..." rows="4" cols="50"></textarea><br>
+                <button type="submit" id="submit-btn">Submit</button>
+            </form>
+            <ul class="comments-list" id="comments-list"></ul>
+        </div>
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                loadComments();
+            });
+    
+            document.getElementById('comment-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const commentText = document.getElementById('comment').value.trim();
+                if (commentText !== '') {
+                    addComment(commentText);
+                    saveComments(); // Save comments to local storage
+                    document.getElementById('comment').value = '';
+                }
+            });
+    
+            function addComment(comment) {
+                const commentList = document.getElementById('comments-list');
+                const currentDate = new Date().toLocaleString(); // Get current date and time
+                const commentItem = document.createElement('li');
+                commentItem.classList.add('comment-item');
+                commentItem.innerHTML = `<p>${comment}</p><span>${currentDate}</span>`;
+                commentList.insertBefore(commentItem, commentList.firstChild); // Add the comment to the beginning of the list
+            }
+    
+            function saveComments() {
+                const comments = [];
+                document.querySelectorAll('.comment-item').forEach(comment => {
+                    const text = comment.querySelector('p').textContent;
+                    const date = comment.querySelector('span').textContent;
+                    comments.push({ text, date });
+                });
+                localStorage.setItem('comments', JSON.stringify(comments));
+            }
+    
+            function loadComments() {
+                const comments = JSON.parse(localStorage.getItem('comments')) || [];
+                comments.reverse().forEach(comment => {
+                    addComment(comment.text);
+                });
+            }
+        </script>
+    
+</body>
+</html>
