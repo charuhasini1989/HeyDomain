@@ -177,6 +177,22 @@
             border-radius: 10px;
             box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
         }
+        .edit-btn,
+    .delete-btn {
+        background-color: #aedfff;
+        color: #16315d;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-right: 5px;
+    }
+
+    .edit-btn:hover,
+    .delete-btn:hover {
+        background-color: #8ab8e8;
+    }
     </style>
     <title>Charuhasini</title>
 </head>
@@ -295,6 +311,69 @@
                 });
             }
         </script>
-    
+        <script>// Function to create a comment
+            function addComment(comment) {
+    const commentList = document.getElementById('comments-list');
+    const currentDate = new Date().toLocaleString();
+    const commentItem = document.createElement('li');
+    commentItem.classList.add('comment-item');
+
+    const commentText = document.createElement('p');
+    commentText.textContent = comment;
+
+    const commentDate = document.createElement('span');
+    commentDate.textContent = currentDate;
+
+    const editButton = document.createElement('button');
+    editButton.textContent = 'Edit';
+    editButton.classList.add('edit-btn'); // Add the edit button class
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.classList.add('delete-btn'); // Add the delete button class
+
+    commentItem.appendChild(commentText);
+    commentItem.appendChild(commentDate);
+    commentItem.appendChild(editButton);
+    commentItem.appendChild(deleteButton);
+
+    commentList.insertBefore(commentItem, commentList.firstChild);
+}
+
+            
+            // Function to edit a comment
+            function editComment(btn) {
+                const editedText = prompt('Edit your comment:', btn.parentElement.querySelector('p').textContent);
+                if (editedText !== null && editedText.trim() !== '') {
+                    btn.parentElement.querySelector('p').textContent = editedText;
+                    saveComments();
+                }
+            }
+            
+            // Function to delete a comment
+            function deleteComment(btn) {
+                btn.parentElement.remove();
+                saveComments();
+            }
+            
+            // Function to save comments to localStorage
+            function saveComments() {
+                const comments = [];
+                document.querySelectorAll('.comment-item').forEach(comment => {
+                    const text = comment.querySelector('p').textContent;
+                    const date = comment.querySelector('span').textContent;
+                    comments.push({ text, date });
+                });
+                localStorage.setItem('comments', JSON.stringify(comments));
+            }
+            
+            // Function to load comments from localStorage
+            function loadComments() {
+                const comments = JSON.parse(localStorage.getItem('comments')) || [];
+                comments.reverse().forEach(comment => {
+                    addComment(comment.text);
+                });
+            }
+            </script>
 </body>
 </html>
