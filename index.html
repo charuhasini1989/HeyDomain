@@ -177,22 +177,26 @@
             border-radius: 10px;
             box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
         }
-        .edit-btn,
-    .delete-btn {
-        background-color: #aedfff;
-        color: #16315d;
-        border: none;
-        padding: 5px 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-right: 5px;
-    }
+        .heart {
+    position: absolute;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFC0CB"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+    background-size: cover;
+    z-index: 1;
+    pointer-events: none;
+    animation: floatUp linear infinite;
+    opacity: 0.66;
+    filter: brightness(0) saturate(100%) invert(60%) sepia(0%) saturate(5992%) hue-rotate(188deg) brightness(93%) contrast(88%);
+}
 
-    .edit-btn:hover,
-    .delete-btn:hover {
-        background-color: #8ab8e8;
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
     }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+    }
+}
+
     </style>
     <title>Charuhasini</title>
 </head>
@@ -248,24 +252,25 @@
             <li><a href="https://srinijacse2.me">srinijacse2</a></li>
             <li><a href="https://syamala.me">syamala</a></li>
             <li><a href="https://saibhargavi.me">saibhargavi</a></li>
-            <li><a href="https://jawaharb15.me">jawaharb15</a></li>
-            <!-- Add more friends' websites as needed -->
+            
+            
         </ul>
     </div>
     <script>
         function showMessage(likeLoki) {
-            const userResponse = document.getElementById('user-response');
-            if (likeLoki) {
-                userResponse.textContent = "You are awesome!!!";
-            } else {
-                userResponse.textContent = "Your loss!";
-            }
-        }
+    const userResponse = document.getElementById('user-response');
+    if (likeLoki) {
+        userResponse.textContent = "You are awesome!!!";
+        createHearts(); // Call a function to create hearts
+    } else {
+        userResponse.textContent = "Your loss!";
+    }
+    }
     </script>
          <div class="comments-box">
             <h2>Comments</h2>
             <form id="comment-form">
-                <textarea id="comment" placeholder="Leave your comment here...Don't worry it's visible only to you" rows="4" cols="50"></textarea><br>
+                <textarea id="comment" placeholder="Leave your comment here..." rows="4" cols="50"></textarea><br>
                 <button type="submit" id="submit-btn">Submit</button>
             </form>
             <ul class="comments-list" id="comments-list"></ul>
@@ -294,7 +299,32 @@
                 commentItem.innerHTML = `<p>${comment}</p><span>${currentDate}</span>`;
                 commentList.insertBefore(commentItem, commentList.firstChild); // Add the comment to the beginning of the list
             }
-    
+            function createHearts() {
+    const heartCount = 70; // Number of hearts
+    const hearts = [];
+
+    for (let i = 0; i < heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        hearts.push(heart);
+        document.body.appendChild(heart);
+
+        // Randomize size and position of hearts
+        const size = Math.floor(Math.random() * 50) + 20;
+        heart.style.width = size + 'px';
+        heart.style.height = size + 'px';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 6 + 5 + 's';
+    }
+
+    // Remove hearts after animation
+    setTimeout(() => {
+        hearts.forEach(heart => {
+            heart.remove();
+        });
+    }, 25000); // Adjust the timing according to the animation duration
+}
+
             function saveComments() {
                 const comments = [];
                 document.querySelectorAll('.comment-item').forEach(comment => {
@@ -312,90 +342,6 @@
                 });
             }
         </script>
-        <script>
-            // Function to create a comment
-            function addComment(comment) {
-                const commentList = document.getElementById('comments-list');
-                const currentDate = new Date().toLocaleString();
-                const commentItem = document.createElement('li');
-                commentItem.classList.add('comment-item');
-        
-                const commentText = document.createElement('p');
-                commentText.textContent = comment;
-        
-                const commentDate = document.createElement('span');
-                commentDate.textContent = currentDate;
-        
-                const editButton = document.createElement('button');
-                editButton.textContent = 'Edit';
-                editButton.classList.add('edit-btn'); // Add the edit button class
-                editButton.onclick = function() {
-                    editComment(editButton);
-                };
-        
-                const deleteButton = document.createElement('button');
-                deleteButton.textContent = 'Delete';
-                deleteButton.classList.add('delete-btn'); // Add the delete button class
-                deleteButton.onclick = function() {
-                    deleteComment(deleteButton);
-                };
-        
-                commentItem.appendChild(commentText);
-                commentItem.appendChild(commentDate);
-                commentItem.appendChild(editButton);
-                commentItem.appendChild(deleteButton);
-        
-                commentList.insertBefore(commentItem, commentList.firstChild);
-            }
-        
-            // Function to edit a comment
-            function editComment(btn) {
-                const editedText = prompt('Edit your comment:', btn.parentElement.querySelector('p').textContent);
-                if (editedText !== null && editedText.trim() !== '') {
-                    btn.parentElement.querySelector('p').textContent = editedText;
-                    saveComments();
-                }
-            }
-        
-            // Function to delete a comment
-            function deleteComment(btn) {
-                btn.parentElement.remove();
-                saveComments();
-            }
-        
-            // Function to save comments to localStorage
-            function saveComments() {
-                const comments = [];
-                document.querySelectorAll('.comment-item').forEach(comment => {
-                    const text = comment.querySelector('p').textContent;
-                    const date = comment.querySelector('span').textContent;
-                    comments.push({ text, date });
-                });
-                localStorage.setItem('comments', JSON.stringify(comments));
-            }
-        
-            // Function to load comments from localStorage
-            function loadComments() {
-                const comments = JSON.parse(localStorage.getItem('comments')) || [];
-                comments.reverse().forEach(comment => {
-                    addComment(comment.text);
-                });
-            }
-        
-            document.addEventListener('DOMContentLoaded', function() {
-                loadComments();
-            });
-        
-            document.getElementById('comment-form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                const commentText = document.getElementById('comment').value.trim();
-                if (commentText !== '') {
-                    addComment(commentText);
-                    saveComments(); // Save comments to local storage
-                    document.getElementById('comment').value = '';
-                }
-            });
-        </script>
-        
+    
 </body>
 </html>
