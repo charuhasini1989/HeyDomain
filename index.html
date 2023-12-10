@@ -180,6 +180,7 @@
         .heart {
     position: absolute;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2380BBE6"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="%2380BBE6"/></svg>');
+
     background-size: cover;
     z-index: 1;
     pointer-events: none;
@@ -251,8 +252,7 @@
             <li><a href="https://srinijacse2.me">srinijacse2</a></li>
             <li><a href="https://syamala.me">syamala</a></li>
             <li><a href="https://saibhargavi.me">saibhargavi</a></li>
-            <li><a href="https://jawaharb15.me">jawaharb15</a></li>
-            <li><a href="https://yaswanthhanumanthu.me">yaswanthhanumanthu</a></li>
+            
             
         </ul>
     </div>
@@ -275,7 +275,6 @@
             </form>
             <ul class="comments-list" id="comments-list"></ul>
         </div>
-        
     
         <script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -343,94 +342,6 @@
                 });
             }
         </script>
-        <script type="module">
-            // Import the functions you need from the SDKs you need
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
-            // TODO: Add SDKs for Firebase products that you want to use
-            // https://firebase.google.com/docs/web/setup#available-libraries
-          
-            // Your web app's Firebase configuration
-            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-            const firebaseConfig = {
-              apiKey: "AIzaSyBsXwaqNXKpOQ8oWv6Zn0bI56cspH6yDtg",
-              authDomain: "comments-99d54.firebaseapp.com",
-              projectId: "comments-99d54",
-              storageBucket: "comments-99d54.appspot.com",
-              messagingSenderId: "651065262187",
-              appId: "1:651065262187:web:1efca8684bf69a213bb12e",
-              measurementId: "G-7BMLS6DBPX"
-            };
-          
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            const analytics = getAnalytics(app);
-          </script>
-          <script>
-          const db = firebase.firestore();
-          
-          // Function to handle form submission
-          document.getElementById('comment-form').addEventListener('submit', function(event) {
-              event.preventDefault();
-              
-              const commentText = document.getElementById('comment').value.trim();
-              if (commentText !== '') {
-                  const currentDate = new Date().toLocaleString(); // Get current date and time
-                  const commentData = {
-                      text: commentText,
-                      date: currentDate
-                  };
-                  
-                  // Add comment data to Firestore collection named 'comments'
-                  db.collection('comments').add(commentData)
-                      .then(() => {
-                          // Clear the input field after successfully adding comment to Firestore
-                          document.getElementById('comment').value = '';
-                      })
-                      .catch(error => {
-                          console.error('Error adding comment: ', error);
-                      });
-              }
-          });
-          
-          // You might also want to load comments from Firestore and display them in the comments-list.
-          // Use another query to fetch comments and populate the comments-list.
-          // This code could be similar to the 'loadComments' function from earlier steps but fetching from Firestore instead of local storage.
-          </script>
-          <script>// Get a reference to the database service
-            const database = firebase.database();
-            
-            // Reference to your comments collection
-            const commentsRef = database.ref('comments');
-            
-            // Function to add a new comment
-            function addComment(commentText) {
-                const currentDate = new Date().toLocaleString();
-                commentsRef.push({
-                    text: commentText,
-                    date: currentDate
-                });
-            }
-            </script>
-            <script>// Function to load comments from the database
-                function loadComments() {
-                    commentsRef.on('value', (snapshot) => {
-                        const comments = snapshot.val();
-                        // 'comments' contains all comments, handle/display them as needed
-                    });
-                }
-            </script>
-            <script>// Function to edit a comment
-                function editComment(commentId, editedText) {
-                    commentsRef.child(commentId).update({
-                        text: editedText
-                    });
-                }
-            </script>
-            <script>// Function to delete a comment
-                function deleteComment(commentId) {
-                    commentsRef.child(commentId).remove();
-                }
-            </script>
+    
 </body>
 </html>
