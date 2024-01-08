@@ -1,12 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Internet</title>
   <style>
-    /* Your existing CSS styles here */
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('loki.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
 
-    /* Additional styling for the video container */
-    .video-container {
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+      z-index: 1;
+    }
+
+    /* Additional styling for the video container and other content */
+    .content-box {
+      width: 100%;
       max-width: 800px;
       margin: 20px auto; /* Center horizontally */
       position: relative;
@@ -15,61 +35,66 @@
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
       background-color: rgba(173, 216, 230, 0.8); /* Blue theme */
       text-align: center; /* Center align contents */
+      padding: 20px; /* Add padding for content inside the box */
+      z-index: 2; /* Make content appear above the overlay */
     }
 
-    .video-container video {
+    .content-box video,
+    .content-box img {
       width: 100%;
       height: auto;
-      display: block;
       border-radius: 10px;
+      margin-bottom: 15px; /* Adjust as needed */
     }
 
-    /* Center the YouTube video */
-    .youtube-video {
-      margin: 20px auto; /* Center horizontally */
+    .content-box p {
+      color: #16315d; /* Darker shade for the text */
+      font-weight: bold;
+      margin-bottom: 15px; /* Adjust as needed */
+    }
+
+    .back-to-home {
+      position: fixed;
+      top: 20px; /* Adjust as needed */
+      left: 20px; /* Adjust as needed */
+      background-color: #aedfff; /* Blue theme */
+      border-radius: 50% 50% 0 0;
+      padding: 10px 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transform: rotate(-45deg);
+      z-index: 2; /* Make the back-to-home button appear above the overlay */
+    }
+
+    .back-to-home a {
+      text-decoration: none;
+      color: #16315d; /* Darker shade for the text */
+      font-weight: bold;
       display: block;
+      transform: rotate(45deg);
     }
-    /* styles.css - Your external CSS file */
-.back-to-home {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #aedfff; /* Blue theme */
-  border-radius: 50% 50% 0 0;
-  padding: 10px 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transform: rotate(-45deg);
-  z-index: 1000;
-}
-
-.back-to-home a {
-  text-decoration: none;
-  color: #16315d; /* Darker shade for the text */
-  font-weight: bold;
-  display: block;
-  transform: rotate(45deg);
-}
-
   </style>
 </head>
 <body>
-  <!-- Your existing HTML content -->
+
+  <div class="overlay"></div>
 
   <!-- Video section -->
-  <div class="video-container">
+  <div class="content-box">
     <video controls>
       <source src="video9.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
+
+  <!-- Back-to-home button -->
   <div class="back-to-home">
     <a href="index.html">Home</a>
   </div>
 
   <!-- YouTube video section -->
-  <iframe class="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/YapPmeXxnVk?si=oL3eeLhbhuPg4yMX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-  <!-- More of your existing HTML content -->
+  <div class="content-box">
+    <iframe class="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/YapPmeXxnVk?si=oL3eeLhbhuPg4yMX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
 
 </body>
 </html>
