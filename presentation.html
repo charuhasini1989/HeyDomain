@@ -1,19 +1,20 @@
-
+<!DOCTYPE html>
 <html>
 <head>
   <title>Your Page Title</title>
   <style>
     /* Your existing CSS styles here */
 
-    /* Additional styling for the video */
+    /* Additional styling for the video container */
     .video-container {
       max-width: 800px;
-      margin: 0 auto;
+      margin: 20px auto; /* Center horizontally */
       position: relative;
       overflow: hidden;
       border-radius: 10px;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
       background-color: rgba(173, 216, 230, 0.8); /* Blue theme */
+      text-align: center; /* Center align contents */
     }
 
     .video-container video {
@@ -21,6 +22,12 @@
       height: auto;
       display: block;
       border-radius: 10px;
+    }
+
+    /* Center the YouTube video */
+    .youtube-video {
+      margin: 20px auto; /* Center horizontally */
+      display: block;
     }
   </style>
 </head>
@@ -34,6 +41,9 @@
       Your browser does not support the video tag.
     </video>
   </div>
+
+  <!-- YouTube video section -->
+  <iframe class="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/YapPmeXxnVk?si=oL3eeLhbhuPg4yMX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
   <!-- More of your existing HTML content -->
 
