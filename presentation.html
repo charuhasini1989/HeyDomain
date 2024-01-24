@@ -21,56 +21,60 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(192, 220, 224, 0.4); /* 40% opaque black */
+      background: rgba(201, 227, 235, 0.5); /* Light blue overlay */
       z-index: 1;
     }
 
-    /* Additional styling for the video container and other content */
     .content-box {
-      width: 80%; /* Adjust as needed */
-      max-width: 800px;
-      margin: 20px auto; /* Center horizontally */
+      width: 100%;
+      max-width: fit-content; /* Adjust as needed */
+      margin: 5% auto; /* Center vertically */
       position: relative;
       overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-      background-color: rgba(173, 216, 230, 0.8); /* Blue theme */
-      text-align: center; /* Center align contents */
-      padding: 20px; /* Add padding for content inside the box */
-      z-index: 2; /* Make content appear above the overlay */
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.9); /* Light background */
+      text-align: center;
+      padding: 20px;
+      z-index: 2;
     }
 
     .content-box video,
-    .content-box img {
+    .content-box iframe {
       width: 100%;
       height: auto;
       border-radius: 10px;
-      margin-bottom: 15px; /* Adjust as needed */
+      margin-bottom: 15px;
     }
 
     .content-box p {
-      color: #16315d; /* Darker shade for the text */
+      color: #16315d;
       font-weight: bold;
-      margin-bottom: 15px; /* Adjust as needed */
+      margin-bottom: 15px;
     }
 
     .back-to-home {
-      position: fixed;
-      top: 20px; /* Adjust as needed */
-      left: 50%; /* Center horizontally */
+      position: absolute;
+      top: 20px;
+      left: 50%;
       transform: translateX(-50%);
-      background-color: #aedfff; /* Blue theme */
-      border-radius: 20px; /* Adjust as needed */
+      background-color: #16315d; /* Dark blue */
+      border-radius: 10px;
       padding: 10px 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 2; /* Make the back-to-home button appear above the overlay */
+      z-index: 2;
+      transition: background-color 0.3s;
     }
 
     .back-to-home a {
       text-decoration: none;
-      color: #16315d; /* Darker shade for the text */
+      color: #f0f6ff; /* Light blue text */
       font-weight: bold;
       display: block;
+    }
+
+    .back-to-home:hover {
+      background-color: #7eabc9; /* Light blue on hover */
     }
   </style>
 </head>
@@ -82,7 +86,7 @@
   <div class="content-box">
     <video controls>
       <source src="video9.mp4" type="video/mp4">
-      Your browser does not support the video tag.
+
     </video>
   </div>
 
@@ -93,10 +97,7 @@
 
   <!-- YouTube video section -->
   <div class="content-box">
-    <iframe class="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/YapPmeXxnVk?si=oL3eeLhbhuPg4yMX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe class="youtube-video" width="100%" height="315" src="https://www.youtube.com/embed/YapPmeXxnVk?si=oL3eeLhbhuPg4yMX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
-
- 
-
 </body>
 </html>
